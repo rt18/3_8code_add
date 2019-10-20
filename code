@@ -22,7 +22,7 @@ wire co;
 	wire SC = sw[2];
 	assign Y[7:0] = ~(SA*(~SB)+(~SC)*m[7:0]);
 	assign s = ~(Y[1]&Y[2]&Y[4]&Y[7]);
-	assign co = !(Y[3]&Y[5]&Y[6]&Y[7]);
+	assign co =~(Y[3]&Y[5]&Y[6]&Y[7]);
 	
 	
 endmodule
