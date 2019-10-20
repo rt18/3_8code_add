@@ -1,0 +1,28 @@
+module 3_8decode_add (key,led,sw);
+input [7:0]led;
+input [2:0]key;
+input [2:0]sw;
+wire [7:0]Y;
+wire [7:0]m;
+wire [2:0]a;
+wire s;
+wire co;
+	assign a[2:0] = key[2:0]; 
+	assign m[0] = ~a[0]*~a[1]*~a[2];
+	assign m[1] = a[0]*~a[1]*~a[2];
+	assign m[2] = ~a[0]*a[1]*~a[2];
+	assign m[3] = a[0]*a[1]*~a[2];
+	assign m[4] = ~a[0]*~a[1]*a[2];
+	assign m[5] = a[0]*~a[1]*a[2];
+	assign m[6] = ~a[0]*a[1]*a[2];
+	assign m[7] = a[0]*a[1]*a[2];
+	
+	wire SA = sw[0];
+	wire SB = sw[1];
+	wire SC = sw[2];
+	assign Y[7:0] = ~(SA*(~SB)+(~SC)*m[7:0]);
+	assign s = ~(Y[1]&Y[2]&Y[4]&Y[7]);
+	assign co = !(Y[3]&Y[5]&Y[6]&Y[7]);
+	
+	
+endmodule
