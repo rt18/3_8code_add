@@ -7,6 +7,7 @@ wire [7:0]m;
 wire [2:0]a;
 wire s;
 wire co;
+
 	assign a[2:0] = key[2:0]; 
 	assign m[0] = ~a[0]*~a[1]*~a[2];
 	assign m[1] = a[0]*~a[1]*~a[2];
